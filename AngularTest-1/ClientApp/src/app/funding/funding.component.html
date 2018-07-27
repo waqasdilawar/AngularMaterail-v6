@@ -1,0 +1,47 @@
+<div  style="margin-top:100px;">
+  <mat-accordion class="example-headers-align">
+    <ng-container *ngIf="featureFunding?.length>=0">
+      <ng-container *ngFor="let sect of featureFunding">
+        <mat-expansion-panel hideToggle="true" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{sect.title}}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{sect.fundingEndsAt | date:'shortDate'}}
+              <section class="example-section">
+                <label class="example-margin">Amount:</label>
+                <mat-slider class="example-margin" [(ngModel)]="value">{{value}}</mat-slider>
+              </section>
+              <section class="example-section">
+                <label class="example-margin">{{sect.targetAmount | currency:'EUR'}}</label>
+
+              </section>
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card>
+            <mat-card-content>
+              <section class="example-section">
+                <label class="example-margin">Progress:</label>
+                <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
+              </section>
+              <section class="example-section">
+                <mat-progress-bar class="example-margin"
+                                  [color]="color"
+                                  [mode]="mode"
+                                  [value]="value"
+                                  [bufferValue]="bufferValue">
+                </mat-progress-bar>
+              </section>
+            </mat-card-content>
+          </mat-card>
+          <mat-action-row>
+            <button mat-button color="primary" (click)="submit(value)">Submit</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </ng-container>
+  </mat-accordion>
+</div>

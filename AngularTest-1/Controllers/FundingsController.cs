@@ -68,29 +68,29 @@ namespace AngularTest_1.Controllers
                 return BadRequest($"Something bad happened! Exception is {e.Message}");
             }
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Post([FromBody] ClientActionViewModel model)
-        //{
-        //    try
-        //    {
-        //        var entity = _mapper.Map<ReviewClientActionType>(model);
-        //        if (entity != null)
-        //        {
-        //            _clientActionRepository.Add(entity);
-        //            if (await _clientActionRepository.SaveAllAsync())
-        //            {
-        //                return Created("", _mapper.Map<ClientActionViewModel>(entity));
-        //            }
-        //        }
-        //        return BadRequest("Something bad happened!");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e);
-        //        //In Production Mode Use this And log the Error in Auditlog
-        //        //return BadRequest($"Something bad happened!");
-        //        return BadRequest($"Something bad happened! Exception is {e.Message}");
-        //    }
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] FundingUserViewModel model)
+        {
+            try
+            {
+                var entity = _mapper.Map<FundingUserViewModel>(model);
+                if (entity != null)
+                {
+                    _dbContext.Add(entity);
+                    await _dbContext.SaveChangesAsync();
+                    
+                        return Created("", _mapper.Map<FundingUserViewModel>(entity));
+                    
+                }
+                return BadRequest("Something bad happened!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                //In Production Mode Use this And log the Error in Auditlog
+                //return BadRequest($"Something bad happened!");
+                return BadRequest($"Something bad happened! Exception is {e.Message}");
+            }
+        }
     }
 }

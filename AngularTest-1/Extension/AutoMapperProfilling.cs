@@ -14,6 +14,7 @@ namespace AngularTest1.Extension
         public AutoMapperProfilling()
         {
             CreateMap<FeatureFunding, FeatureFundingViewModel>().ReverseMap();
+            CreateMap<FeatureFundinginterest, FundingUserViewModel>().ReverseMap();
         }  
     }
 }

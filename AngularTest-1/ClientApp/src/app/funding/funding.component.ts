@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FundingService } from '../services/funding.service';
 import { FeatureFunding } from '../models/featurefunding';
+import { FundingUser } from '../models/fundinguser';
 
 @Component({
   selector: 'app-funding',
@@ -20,8 +21,10 @@ export class FundingComponent  {
       this.featureFunding = result;
     });
   }
-  submit(value:any) {
-    console.log(value,'dsadasdas');
+  submit(value: any) {
+    var fundingUser = new FundingUser();
+    console.log(value, 'dsadasdas');
+    this.fundingService.addFunding(fundingUser).subscribe(result=>console.log(result));
   }
   setStep(index: number) {
     this.step = index;

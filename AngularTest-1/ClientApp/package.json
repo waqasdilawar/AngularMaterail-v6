@@ -14,11 +14,13 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "6.1.0",
+    "@angular/cdk": "^6.4.1",
     "@angular/common": "6.1.0",
     "@angular/compiler": "6.1.0",
     "@angular/core": "6.1.0",
     "@angular/forms": "6.1.0",
     "@angular/http": "6.1.0",
+    "@angular/material": "^6.4.1",
     "@angular/platform-browser": "6.1.0",
     "@angular/platform-browser-dynamic": "6.1.0",
     "@angular/platform-server": "6.1.0",
@@ -27,6 +29,7 @@
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.7",
+    "hammerjs": "^2.0.8",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
   },

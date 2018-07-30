@@ -51,6 +51,10 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FundingComponent } from './funding/funding.component';
 import { FundingService } from './services/funding.service';
+import { LoginComponent } from './services/login.component';
+import { SecurityService } from './services/security.service';
+import { AuthGuard } from './services/auth-guard';
+import { AnimationHandlingService } from './services/animation-handling.service';
 
 @NgModule({
   declarations: [
@@ -102,12 +106,16 @@ import { FundingService } from './services/funding.service';
     MatStepperModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
       { path: 'counter', component: CounterComponent },
       {path:'funding',component:FundingComponent},
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [FundingService],
+  providers: [FundingService, SecurityService, AuthGuard, AnimationHandlingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

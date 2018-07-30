@@ -11,7 +11,6 @@ export class SecurityService {
     public isError: boolean = false;
     public statusCode: number;
     private _baseUrl: string;
-    private _adminUrl: string;
     tokenObject: TokenObject = new TokenObject();
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
        
@@ -41,7 +40,7 @@ export class SecurityService {
         this.resetSecurityObject();
     }
     getAccessToken(): Observable<string>  {
-        return this.http.get<string>(this._adminUrl + 'api/access-token').pipe(
+      return this.http.get<string>(this._baseUrl + 'api/access-token').pipe(
             tap(resp => {
                 // Use object assign to update the current object
                 // NOTE: Don't create a new AppUserAuth object
